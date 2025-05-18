@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея зображень</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Галерея зображень</h1>
+    </header>
+
+    <main>
+        <section class="hero">
+            <picture class="hero-image">
+                <source
+                    srcset="https://picsum.photos/1920/1080 1920w,
+                            https://picsum.photos/1280/720 1280w,
+                            https://picsum.photos/640/360 640w"
+                    sizes="(max-width: 640px) 100vw,
+                           (max-width: 1280px) 50vw,
+                           1920px">
+                <img src="https://picsum.photos/1280/720" 
+                     alt="Hero image"
+                     loading="eager">
+            </picture>
+        </section>
+
+        <section class="gallery">
+            <div class="gallery-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                     data-src="https://picsum.photos/600/400?1"
+                     alt="Gallery image 1"
+                     loading="lazy"
+                     class="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                     data-src="https://picsum.photos/600/400?2"
+                     alt="Gallery image 2"
+                     loading="lazy"
+                     class="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                     data-src="https://picsum.photos/600/400?3"
+                     alt="Gallery image 3"
+                     loading="lazy"
+                     class="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                     data-src="https://picsum.photos/600/400?4"
+                     alt="Gallery image 4"
+                     loading="lazy"
+                     class="lazy">
+            </div>
+        </section>
+    </main>
+
+    <script src="lazy-loading.js"></script>
+</body>
+</html>

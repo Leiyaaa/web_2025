@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кешування та оптимізація</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="theme-switch">
+        <button id="themeToggle">Змінити тему</button>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Кешування та оптимізація</h1>
+        </header>
+
+        <section class="welcome-section">
+            <h2>Ласкаво просимо!</h2>
+            <p>Це демонстрація можливостей кешування та оптимізації веб-додатку.</p>
+        </section>
+
+        <section id="userForm" class="form-section">
+            <h2>Дані користувача</h2>
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="username">Ім'я користувача:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="theme">Тема оформлення:</label>
+                    <select id="theme" name="theme">
+                        <option value="light">Світла</option>
+                        <option value="dark">Темна</option>
+                    </select>
+                </div>
+                <button type="submit">Зберегти налаштування</button>
+            </form>
+        </section>
+
+        <section class="features-section">
+            <h2>Особливості</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Кешування даних</h3>
+                    <p>Швидке завантаження завдяки локальному кешу</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Темна тема</h3>
+                    <p>Комфортний перегляд вночі</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Оптимізація</h3>
+                    <p>Оптимізоване завантаження ресурсів</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery-section">
+            <h2>Галерея</h2>
+            <div class="gallery-grid"></div>
+        </section>
+
+        <section id="dynamicContent" class="dynamic-section">
+            <h2>Динамічний контент</h2>
+            <div id="contentContainer"></div>
+            <button id="loadContent">Завантажити контент</button>
+        </section>
+
+        <section class="stats-section">
+            <h2>Статистика</h2>
+            <div id="statsContainer">
+                <p>Завантажено зображень: <span id="imagesLoaded">0</span></p>
+                <p>Розмір кешу: <span id="cacheSize">0</span> KB</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="storage.js"></script>
+    <script src="cache.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

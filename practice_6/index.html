@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Repositories Browser</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GitHub Repositories Browser</h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search repositories...">
+                <select id="languageFilter">
+                    <option value="">All Languages</option>
+                </select>
+            </div>
+        </header>
+
+        <div id="loader" class="loader">Loading...</div>
+        <div id="error" class="error"></div>
+        
+        <main>
+            <div id="repos" class="repos"></div>
+            <div class="pagination">
+                <button id="prevPage">&laquo; Previous</button>
+                <span id="currentPage">1</span>
+                <button id="nextPage">Next &raquo;</button>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
