@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оптимізація продуктивності</title>
+    <style>
+        :root {
+            --main-color: #1976d2;
+            --accent: #43a047;
+            --text-color: #222;
+            --bg-light: #f5f7fa;
+            --shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text-color);
+            background: var(--bg-light);
+            line-height: 1.7;
+        }
+        .hero {
+            min-height: 60vh;
+            background: linear-gradient(120deg, var(--main-color) 60%, var(--accent) 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+        }
+        .hero-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        .hero-actions .btn {
+            background: #fff;
+            color: var(--main-color);
+            padding: 0.9rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow);
+            transition: background .2s, color .2s;
+        }
+        .hero-actions .btn:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--main-color);
+            font-weight: 700;
+            text-align: center;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .feature-card {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            padding: 2rem 1.2rem 1.2rem 1.2rem;
+            text-align: center;
+            transition: transform .2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-6px) scale(1.03);
+        }
+        .feature-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(33,150,243,0.08);
+        }
+        .feature-card h3 {
+            margin: 0.7rem 0 0.5rem;
+            font-size: 1.25rem;
+            color: var(--accent);
+        }
+        .feature-card p {
+            color: #555;
+            font-size: 1rem;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .gallery-item {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform .2s;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-item figcaption {
+            padding: 1rem;
+            font-size: 1rem;
+            color: #444;
+            text-align: center;
+        }
+        .about-section {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            padding: 2.5rem 2rem;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+        .about-img {
+            flex: 1 1 300px;
+            min-width: 220px;
+            max-width: 350px;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(33,150,243,0.08);
+        }
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .about-content {
+            flex: 2 1 400px;
+        }
+        .about-content h2 {
+            color: var(--main-color);
+            margin-top: 0;
+        }
+        .about-content p {
+            color: #444;
+            font-size: 1.1rem;
+        }
+        .contacts-section {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .contacts-section h2 {
+            color: var(--main-color);
+        }
+        .contacts-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 0 0;
+            font-size: 1.1rem;
+        }
+        .contacts-list li {
+            margin-bottom: 0.7rem;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .metric-card {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        .metric-value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        .metric-label {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        .footer {
+            background: var(--main-color);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 1rem 1rem 1rem;
+            margin-top: 3rem;
+            border-radius: 1rem 1rem 0 0;
+        }
+        @media (max-width: 900px) {
+            .about-section { flex-direction: column; text-align: center; }
+            .about-img, .about-content { max-width: 100%; }
+        }
+        @media (max-width: 600px) {
+            .hero-content { padding: 2rem 0.5rem; }
+            .container { padding: 1rem 0.5rem; }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+          as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="dist/critical.min.css" as="style">
+    <link rel="stylesheet" href="dist/critical.min.css">
+    <link rel="preload" href="dist/components.min.css" as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Оптимізація веб-сайтів</h1>
+            <p class="hero-subtitle">Практичні методи покращення продуктивності</p>
+            <div class="hero-actions">
+                <a href="#features" class="btn">Дізнатись більше</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="features" class="features">
+            <h2 class="section-title">Переваги</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <img src="https://picsum.photos/id/1011/80/80" alt="Оптимізація зображень" loading="lazy">
+                    <h3>Оптимізація зображень</h3>
+                    <p>Автоматична оптимізація, адаптивність та lazy loading для швидкого завантаження.</p>
+                </div>
+                <div class="feature-card">
+                    <img src="https://picsum.photos/id/1012/80/80" alt="Швидке завантаження" loading="lazy">
+                    <h3>Швидке завантаження</h3>
+                    <p>Мінімізація, об'єднання ресурсів та асинхронне завантаження скриптів.</p>
+                </div>
+                <div class="feature-card">
+                    <img src="https://picsum.photos/id/1013/80/80" alt="Аналітика" loading="lazy">
+                    <h3>Аналітика</h3>
+                    <p>Відстеження метрик продуктивності та Core Web Vitals для контролю якості.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2 class="section-title">Галерея</h2>
+            <div class="gallery-grid">
+                <figure class="gallery-item">
+                    <img src="https://picsum.photos/id/1025/600/220" alt="Галерея 1" loading="lazy">
+                    <figcaption>Сучасний дизайн</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="https://picsum.photos/id/1035/600/220" alt="Галерея 2" loading="lazy">
+                    <figcaption>Адаптивна верстка</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="https://picsum.photos/id/1045/600/220" alt="Галерея 3" loading="lazy">
+                    <figcaption>Висока продуктивність</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="about-img">
+                <img src="https://picsum.photos/id/1050/350/350" alt="Наша команда" loading="lazy">
+            </div>
+            <div class="about-content">
+                <h2>Про нас</h2>
+                <p>
+                    Ми команда ентузіастів, що спеціалізується на оптимізації веб-додатків. Наш досвід охоплює сучасні технології, автоматизацію процесів, аналітику та забезпечення найкращого користувацького досвіду.
+                </p>
+                <p>
+                    Наша місія — робити інтернет швидшим, доступнішим і зручнішим для всіх.
+                </p>
+            </div>
+        </section>
+
+        <section class="contacts-section">
+            <h2>Контакти</h2>
+            <ul class="contacts-list">
+                <li><strong>Email:</strong> info@webperf.com.ua</li>
+                <li><strong>Телефон:</strong> +38 (044) 123-45-67</li>
+                <li><strong>Адреса:</strong> м. Київ, вул. Веб-Оптимізації, 1</li>
+            </ul>
+        </section>
+
+        <section id="metrics" class="metrics">
+            <h2 class="section-title">Показники ефективності</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value" id="loadTime">0.5s</div>
+                    <div class="metric-label">Швидкість завантаження</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="perfScore">95</div>
+                    <div class="metric-label">Performance Score</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="cacheHits">99%</div>
+                    <div class="metric-label">Cache Efficiency</div>
+                </div>
+            </div>
+            <div class="performance-metrics" style="margin-top:2rem;">
+                <div class="metric">
+                    <span>FCP:</span>
+                    <span id="fcp">...</span>
+                </div>
+                <div class="metric">
+                    <span>LCP:</span>
+                    <span id="lcp">...</span>
+                </div>
+                <div class="metric">
+                    <span>CLS:</span>
+                    <span id="cls">...</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Web Performance. Всі права захищено.</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { performanceMonitor } from './dist/modules/performance.min.js';
+        performanceMonitor.init();
+    </script>
+    <script src="dist/main.min.js" defer></script>
+</body>
+</html>
