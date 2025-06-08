@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Динамічне меню - Лабораторна робота №4</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="main-menu">
+            <div class="menu-container">
+                <div class="logo">
+                    <a href="/">DynamicMenu</a>
+                </div>
+                
+                <button class="burger-menu" aria-label="Відкрити меню" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul id="menuContainer" class="menu-list">
+                    <!-- Пункти меню будуть додані динамічно -->
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="content">
+            <h1>Лабораторна робота №4: Динамічне меню</h1>
+            <p>Це демонстрація динамічного багаторівневого меню з JSON даними, анімаціями та адаптивним дизайном.</p>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Багаторівневе меню</h3>
+                    <p>Підтримка до 3 рівнів вкладеності</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Мобільна версія</h3>
+                    <p>Адаптивний дизайн з бургер-кнопкою</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Анімації</h3>
+                    <p>Плавні переходи і ефекти</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
