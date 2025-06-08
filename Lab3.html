@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Layout</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #ecf0f1;
+            --text-color: #2c3e50;
+            --card-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            box-shadow: var(--card-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo { 
+            font-size: 1.8rem; 
+            font-weight: bold; 
+            text-decoration: none; 
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+
+        header .logo:hover {
+            color: var(--accent-color);
+        }
+
+        header nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        main {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        main .content, 
+        main .sidebar {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+        }
+
+        section.cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        section.cards .card {
+            flex: 1 1 calc(33.333% - 2rem);
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section.cards .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        footer {
+            display: flex;
+            gap: 2rem;
+            padding: 3rem 5%;
+            background: var(--primary-color);
+            color: white;
+            margin-top: 3rem;
+        }
+
+        footer .column { 
+            flex: 1;
+            padding: 0 1rem;
+        }
+
+        footer h3 {
+            color: white;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            main { 
+                flex-direction: column; 
+            }
+            section.cards .card { 
+                flex: 1 1 calc(50% - 2rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            header, main, section.cards, footer {
+                flex-direction: column;
+                text-align: center;
+            }
+            header nav ul { 
+                flex-direction: column;
+                gap: 1rem;
+            }
+            section.cards .card { 
+                flex: 1 1 100%;
+            }
+            main, section.cards {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">FlexBoxLab</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="#about">Про Flexbox</a></li>
+                <li><a href="#contact">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content">
+            <h1>Вивчення Flexbox</h1>
+            <p>CSS Flexbox — це модуль макету, який дозволяє створювати гнучкі та адаптивні структури сторінок. У даній лабораторній роботі ми освоюємо основні властивості flex-контейнера та flex-елементів, такі як вирівнювання, розподіл простору та порядок елементів.</p>
+            <h2 id="about">Що таке Flexbox?</h2>
+            <p>
+                Flexbox забезпечує простий спосіб розташування, вирівнювання і розподілу простору між елементами у контейнері, що дозволяє швидко адаптувати макет під різні розміри екранів.
+            </p>
+        </div>
+        <aside class="sidebar">
+            <h2>Поради</h2>
+            <p>
+                Використовуйте властивості display: flex, justify-content, align-items та flex-wrap для створення гнучких макетів. За допомогою медіа-запитів забезпечуйте адаптивність на планшетах і мобільних пристроях.
+            </p>
+        </aside>
+    </main>
+
+    <section class="cards">
+        <div class="card">
+            <h3>Карточка 1</h3>
+            <p>Опис товару чи послуги. Використовуйте Flexbox для оптимального розташування контенту.</p>
+        </div>
+        <div class="card">
+            <h3>Карточка 2</h3>
+            <p>Гнучке розташування елементів дозволяє легко керувати макетом без складних обчислень.</p>
+        </div>
+        <div class="card">
+            <h3>Карточка 3</h3>
+            <p>Популярні рішення для адаптивного дизайну в сучасному веб-розробництві спрощують роботу дизайнера.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="column">
+            <h3>Про нас</h3>
+            <p>Ми спеціалізуємось на сучасному веб-дизайні та розробці адаптивних макетів, що відповідають потребам сучасного бізнесу.</p>
+        </div>
+        <div class="column">
+            <h3>Сервіси</h3>
+            <p>Створення гнучких інтерфейсів, адаптивний дизайн, UI/UX консалтинг.</p>
+        </div>
+        <div class="column" id="contact">
+            <h3>Контакти</h3>
+            <p>Email: info@example.com<br>Телефон: +380 123 456 789</p>
+        </div>
+    </footer>
+</body>
+</html>
