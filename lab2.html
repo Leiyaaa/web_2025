@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dota 2 - The Battle of Ancients</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1b2838;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #000;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links li {
+            position: relative;
+        }
+        .nav-links a {
+            color: #66c0f4;
+            text-decoration: none;
+            padding: 8px 12px;
+            transition: background 0.3s, transform 0.2s;
+            cursor: pointer;
+        }
+        .nav-links a:hover, .nav-links .active {
+            background: #e2b714;
+            color: #1b2838;
+            border-radius: 5px;
+            transform: scale(1.1);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #000;
+            display: none;
+            flex-direction: column;
+            min-width: 150px;
+            border-radius: 5px;
+        }
+        .dropdown a {
+            padding: 10px;
+            display: block;
+            white-space: nowrap;
+        }
+        .dropdown a:hover {
+            background: #e2b714;
+            color: #1b2838;
+        }
+        .nav-links li:hover .dropdown {
+            display: flex;
+        }
+
+        .content {
+            padding: 100px 20px 40px;
+        }
+        .section {
+            margin: 60px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: background 0.3s;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .section:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .hero-img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .burger-menu span {
+            height: 3px;
+            width: 25px;
+            background: #66c0f4;
+            margin: 4px 0;
+            transition: all 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #000;
+                border-top: 1px solid #66c0f4;
+            }
+            .nav-links li {
+                text-align: left;
+                padding: 10px;
+            }
+            .burger-menu {
+                display: flex;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+        }
+
+        .nav-links,
+        .dropdown {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="https://i.pinimg.com/736x/8a/8b/50/8a8b50da2bc4afa933718061fe291520.jpg" alt="Dota 2 Logo">
+            <span>Dota 2</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#heroes">Heroes</a></li>
+            <li><a href="#tournaments">Tournaments</a></li>
+            <li>
+                <a href="#guides">Guides</a>
+                <div class="dropdown">
+                    <a href="#beginner">Beginner Guide</a>
+                    <a href="#advanced">Advanced Strategies</a>
+                </div>
+            </li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <form class="search-box" onsubmit="search(event)">
+            <input type="text" id="search-input" placeholder="Search..." />
+            <button type="submit">🔍</button>
+        </form>
+        <div class="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    
+    <div class="content">
+        <h1 id="home">Welcome to the World of Dota 2</h1>
+        <p>Dota 2 is one of the most popular multiplayer online battle arena (MOBA) games, developed and published by Valve Corporation.</p>
+        
+        <div class="section" id="heroes">
+            <h2>Popular Heroes</h2>
+            <p>Discover the most powerful heroes in Dota 2. <a href="https://www.dota2.com/heroes" target="_blank">Learn more</a>.</p>
+        </div>
+        
+        <div class="section" id="tournaments">
+            <h2>Major Tournaments</h2>
+            <p>Follow the biggest events including The International. <a href="https://www.dota2.com/esports/ti12" target="_blank">More info</a>.</p>
+        </div>
+        
+        <div class="section" id="guides">
+            <h2>Guides & Strategies</h2>
+            <p>Learn the best strategies to dominate your games.</p>
+        </div>
+
+        <div class="section" id="beginner">
+            <h2>Beginner Guide</h2>
+            <p>New to Dota 2? Here are some key tips:</p>
+            <ul style="text-align: left;">
+                <li>Start with beginner-friendly heroes like Lich, Sniper, or Wraith King.</li>
+                <li>Learn the map and warding spots.</li>
+                <li>Practice last-hitting and denying creeps.</li>
+                <li>Understand hero roles: Carry, Support, Offlane, Mid.</li>
+                <li>Watch professional games to learn strategies.</li>
+            </ul>
+        </div>
+
+        <div class="section" id="advanced">
+            <h2>Advanced Strategies</h2>
+            <p>Want to take your skills to the next level? Try these strategies:</p>
+            <ul style="text-align: left;">
+                <li>Master positioning and team fights.</li>
+                <li>Understand power spikes and item timings.</li>
+                <li>Use advanced mechanics like creep pulling and stacking.</li>
+                <li>Learn counter-picking heroes and adapting to drafts.</li>
+                <li>Improve map awareness and communication with your team.</li>
+            </ul>
+        </div>
+        
+        <div class="section" id="contact">
+            <h2>Contact Us</h2>
+            <p>Have questions? Visit the <a href="https://store.steampowered.com/app/570/Dota_2/" target="_blank">Dota 2 Steam page</a> to start playing today.</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                
+                document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
+                this.classList.add('active');
+                
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    const offset = document.querySelector('.navbar').offsetHeight;
+                    window.scrollTo({
+                        top: targetSection.offsetTop - offset,
+                        behavior: 'smooth'
+                    });
+                }
+                const navLinks = document.querySelector('.nav-links');
+                if(navLinks.classList.contains('show')){
+                    navLinks.classList.remove('show');
+                }
+            });
+        });
+
+        function search(event) {
+            event.preventDefault();
+            const query = document.getElementById('search-input').value.trim();
+            if (query) {
+                console.log('Searching for:', query);
+                alert('Search functionality is not implemented yet!');
+            }
+        }
+
+        const burger = document.querySelector('.burger-menu');
+        burger.addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
